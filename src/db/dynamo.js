@@ -15,4 +15,7 @@ const upsertItemWithParams = async (tableName, campaign) => {
   return campaign;
 };
 
-module.exports = { upsertItemToLedger, upsertItemWithParams };
+module.exports = {
+  upsertBooking: upsertItemToLedger,
+  upsertCampaign: upsertItemWithParams
+};

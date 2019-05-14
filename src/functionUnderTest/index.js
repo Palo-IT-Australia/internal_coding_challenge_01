@@ -1,4 +1,4 @@
-const { upsertItemToLedger, upsertItemWithParams } = require('../db/dynamo');
+const { upsertBooking, upsertCampaign } = require('../db/dynamo');
 let { generateId } = require('../stamps/id');
 
 const processBookings = async (tableName, campaign) => {
@@ -14,7 +14,7 @@ const processBookings = async (tableName, campaign) => {
       if (!slot.id) {
         counter += 1;
         slot.id = generateId();
-        const canBook = await upsertItemToLedger(slot, true);
+        const canBook = await upsertBooking(slot, true);
         if (!canBook) {
           counter += 1;
         }
@@ -23,7 +23,7 @@ const processBookings = async (tableName, campaign) => {
       //if a slot to be removed
       if (slot.id === '0') {
         counter += 1;
-        const canRemove = await upsertItemToLedger(slot, false);
+        const canRemove = await upsertBooking(slot, false);
         if (canRemove) {
           campaign.bookedSlots.splice(i, 1);
         } else {
@@ -39,7 +39,7 @@ const processBookings = async (tableName, campaign) => {
       statusCode: 400
     };
   }
-  return await upsertItemWithParams(tableName, campaign);
+  return await upsertCampaign(tableName, campaign);
 };
 
 module.exports = { processBookings };
