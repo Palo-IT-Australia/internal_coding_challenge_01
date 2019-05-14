@@ -1,6 +1,18 @@
-// DO NOT modify
-const save = async () => {
+// DO NOT modify this file
+
+const save = () => {
   return new Promise(resolve => setInterval(() => resolve(), 300));
 };
 
-module.exports.save = save;
+const upsertItemToLedger = async (slot, insert) => {
+  if (slot.error) return false;
+  await save();
+  return true;
+};
+
+const upsertItemWithParams = async (tableName, campaign) => {
+  await save();
+  return campaign;
+};
+
+module.exports = { upsertItemToLedger, upsertItemWithParams };
