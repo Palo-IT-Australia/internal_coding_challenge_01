@@ -4,18 +4,18 @@ const save = () => {
   return new Promise(resolve => setInterval(() => resolve(), 300));
 };
 
-const upsertItemToLedger = async (slot, insert) => {
+const upsertBooking = async (slot, insert) => {
   if (slot.error) return false;
   await save();
   return true;
 };
 
-const upsertItemWithParams = async (tableName, campaign) => {
+const upsertCampaign = async (tableName, campaign) => {
   await save();
   return campaign;
 };
 
 module.exports = {
-  upsertBooking: upsertItemToLedger,
-  upsertCampaign: upsertItemWithParams
+  upsertBooking,
+  upsertCampaign
 };

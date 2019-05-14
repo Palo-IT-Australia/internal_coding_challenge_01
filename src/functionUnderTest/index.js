@@ -1,6 +1,11 @@
+//use upsertBooking to save each of the bookedSlots in the campaign
+//use upsertCampaign to save the new campaign
 const { upsertBooking, upsertCampaign } = require('../db/dynamo');
+
+//use generate id to create id stamps
 let { generateId } = require('../stamps/id');
 
+//implement this function
 const processBookings = async (tableName, campaign) => {
   if (!campaign.id) {
     campaign.id = generateId();
