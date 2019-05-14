@@ -1,14 +1,24 @@
-const functionUnderTest = require('./index').functionUnderTest;
+jest.mock('../stamps/id', () => {
+  return {
+    generateId: () => '1111'
+  };
+});
 
+const { processBookings } = require('./index');
 
-describe('basic tests for functionUnderTest:', () => {
+afterAll(() => {
+  jest.resetAllMocks();
+});
 
-  it('it exists', () => {
-    expect(functionUnderTest).not.toBeUndefined()
-  })
+test('no bookings', async () => {
+  let noBookingCampaign = { bookedSlots: [] };
+  let result = await processBookings('slots', noBookingCampaign);
+  expect(result).toMatchObject(noBookingCampaign);
+});
 
-  it('it returns expected value', () => {
-    expect(functionUnderTest()).toBeUndefined()
-  })
-
-})
+test('stamp new campaign', async () => {
+  let newCampaign = { bookedSlots: [] };
+  let result = await processBookings('slots', newCampaign);
+  expect(result.id).toBe('1111');
+  expect(result.createdAt instanceof Date).toBe(true);
+});
