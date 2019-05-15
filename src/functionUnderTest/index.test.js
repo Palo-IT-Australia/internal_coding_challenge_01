@@ -102,6 +102,7 @@ describe('processBookings', () => {
     });
     const obs = new PerformanceObserver((list) => {
       const { duration, name } = list.getEntries()[0];
+      // eslint-disable-next-line no-console
       console.warn(`${name} result: ${duration}`);
       expect(duration).toBeLessThan(300);
     });

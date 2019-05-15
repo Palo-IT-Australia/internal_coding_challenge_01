@@ -16,8 +16,7 @@
     "start": "npm run test",
     "ci-test": "jest --collectCoverage",
     "test": "jest",
-    "lint": "eslint ./src/**/*.js",
-    "ci-lint": "eslint ./src/**/*.js ./src/ --format junit --output-file ./reports/eslint.xml"
+    "lint": "eslint ./src/**/*.js"
   },
   "author": "",
   "license": "ISC"

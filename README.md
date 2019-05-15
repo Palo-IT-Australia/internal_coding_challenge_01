@@ -26,21 +26,18 @@ YOu need to have node in reasonable version installed. (8<)
 
 Use
 ```
-npm instal
+npm install
 ```
 
 ## How to use <a name="how-to-use"></a>
 
-Refactor ```functionUnderTest``` to the best of you abilities.
+Create ```functionUnderTest``` according to specs and tests.
 
 Use
 ```
 npm start
 ```
-or 
-```
-npm test
-```
+
 to check your solution. 
 
 ## How to participate <a name="how-to-participate"></a>

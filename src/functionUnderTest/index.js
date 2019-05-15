@@ -5,6 +5,20 @@ const { upsertBooking, upsertCampaign } = require('../db/dynamo');
 // use generate id to create id stamps
 const { generateId } = require('../stamps/id');
 
+/**
+ * A Slot
+ * @typedef {Object} Slot
+ * @property {string=} id - The title
+ * @property {boolean=} error - The artist
+ */
+
+/**
+ * A campaign
+ * @typedef {Object} Campaign
+ * @property {string=} id - The title
+ * @property {Date=} createdAt - The artist
+ * @property {Slot[]} bookingSlots - The year
+ */
 
 /**
  * IMPLEMENT THIS FUNCTION !!
@@ -14,15 +28,12 @@ const { generateId } = require('../stamps/id');
  * and campaign, then upserts the campaign.
  *
  * @param {string} tableName Name of the table to be updated.
- * @param {object} [campaign] Campaign object.
- * @param {string} [campaign.id] optional Identifier.
- * @param {Date} [campaign.createdAt] optional Date of creation.
- * @param {Array} [campaign.bookingSlots] List of booking slots to process
+ * @param {Campaign=} campaign object.
  *
  * @returns upsert result
  */
 const processBookings = async (tableName, campaign = {}) => {
-  // @TODO remove disbales and code between them
+  // @TODO remove disables and code between them
   /* eslint-disable */
   if (!campaign.id) {
     campaign.id = generateId();
