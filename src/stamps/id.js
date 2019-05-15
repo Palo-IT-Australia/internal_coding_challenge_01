@@ -1,4 +1,10 @@
+/**
+ * DO NOT MODIFY !!
+ * Module mocking uuid generator
+ */
+
 const uuid = require('uuid/v1');
-let generateId = () => uuid();
+
+const generateId = () => uuid();
 
 module.exports = { generateId };

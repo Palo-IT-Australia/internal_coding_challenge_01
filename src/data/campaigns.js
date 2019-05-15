@@ -1,3 +1,9 @@
+/**
+ * DO NOT MODIFY !!
+ * Test data
+ */
+
+
 module.exports = {
   upsertSlot: {
     given: {

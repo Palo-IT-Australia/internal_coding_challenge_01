@@ -1,11 +1,11 @@
-//use upsertBooking to save each of the bookedSlots in the campaign
-//use upsertCampaign to save the new campaign
+// use upsertBooking to save each of the bookedSlots in the campaign
+// use upsertCampaign to save the new campaign
 const { upsertBooking, upsertCampaign } = require('../db/dynamo');
 
-//use generate id to create id stamps
-let { generateId } = require('../stamps/id');
+// use generate id to create id stamps
+const { generateId } = require('../stamps/id');
 
-//implement this function
+// implement this function
 const processBookings = async (tableName, campaign) => {
   if (!campaign.id) {
     campaign.id = generateId();
@@ -15,7 +15,7 @@ const processBookings = async (tableName, campaign) => {
   if (campaign.bookedSlots && campaign.bookedSlots.length > 0) {
     for (let i = 0; i < campaign.bookedSlots.length; i++) {
       const slot = campaign.bookedSlots[i];
-      //if a slot to be booked
+      // if a slot to be booked
       if (!slot.id) {
         counter += 1;
         slot.id = generateId();
@@ -25,7 +25,7 @@ const processBookings = async (tableName, campaign) => {
         }
         break;
       }
-      //if a slot to be removed
+      // if a slot to be removed
       if (slot.id === '0') {
         counter += 1;
         const canRemove = await upsertBooking(slot, false);
