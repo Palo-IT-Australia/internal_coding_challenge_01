@@ -2,6 +2,7 @@ module.exports = {
     "globals": {
         "test": true,
         "expect": true,
+
     },
     "env": {
         "es6": true,
