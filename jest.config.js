@@ -1,3 +1,2 @@
-{
-  reporters: ['default', 'jest-junit']
-}
+module.exports = {
+};

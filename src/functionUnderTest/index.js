@@ -5,8 +5,25 @@ const { upsertBooking, upsertCampaign } = require('../db/dynamo');
 // use generate id to create id stamps
 const { generateId } = require('../stamps/id');
 
-// implement this function
-const processBookings = async (tableName, campaign) => {
+
+/**
+ * IMPLEMENT THIS FUNCTION !!
+ *
+ * @function processBookings async function processing bookings.
+ * It iterates over the campaign list, modifies bookings based on data from tableName
+ * and campaign, then upserts the campaign.
+ *
+ * @param {string} tableName Name of the table to be updated.
+ * @param {object} campaign Campaign object.
+ * @param {string} [campaign.id] optional Identifier.
+ * @param {Date} [campaign.createdAt] optional Date of creation.
+ * @param {Array} [campaign.bookingSlots] List of booking slots to process
+ *
+ * @returns upsert result
+ */
+const processBookings = async (tableName, campaign = {}) => {
+  /**
+   */
   if (!campaign.id) {
     campaign.id = generateId();
     campaign.createdAt = new Date();
@@ -44,7 +61,7 @@ const processBookings = async (tableName, campaign) => {
       statusCode: 400
     };
   }
-  return await upsertCampaign(tableName, campaign);
+  return upsertCampaign(tableName, campaign);
 };
 
 module.exports = { processBookings };

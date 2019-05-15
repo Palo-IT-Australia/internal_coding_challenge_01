@@ -3,9 +3,7 @@
  * Module mocking the dynamo db methods
  */
 
-const save = () => {
-  return new Promise(resolve => setInterval(() => resolve(), 300));
-};
+const save = () => new Promise(resolve => setInterval(() => resolve(), 100));
 
 const upsertBooking = async (slot) => {
   if (slot.error) return false;

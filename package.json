@@ -13,9 +13,11 @@
     "jest": "^23.4.0"
   },
   "scripts": {
-    "start": "npm run lint && npm run test",
-    "test": "jest --collectCoverage",
-    "lint": "eslint ./src/**/*.js ./src/ --format junit --output-file ./reports/eslint.xml"
+    "start": "npm run test",
+    "ci-test": "jest --collectCoverage",
+    "test": "jest",
+    "lint": "eslint ./src/**/*.js",
+    "ci-lint": "eslint ./src/**/*.js ./src/ --format junit --output-file ./reports/eslint.xml"
   },
   "author": "",
   "license": "ISC"

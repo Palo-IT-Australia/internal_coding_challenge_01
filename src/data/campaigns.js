@@ -3,12 +3,13 @@
  * Test data
  */
 
+const mockCreatedAt = new Date('2019-05-15T09:42:52Z');
 
 module.exports = {
   upsertSlot: {
     given: {
       id: '1',
-      createdAt: 'today',
+      createdAt: mockCreatedAt,
       bookedSlots: [
         {},
         {
@@ -18,7 +19,7 @@ module.exports = {
     },
     expected: {
       id: '1',
-      createdAt: 'today',
+      createdAt: mockCreatedAt,
       bookedSlots: [
         {
           id: 'new'
@@ -32,7 +33,7 @@ module.exports = {
   upsertSlotError: {
     given: {
       id: '1',
-      createdAt: 'today',
+      createdAt: mockCreatedAt,
       bookedSlots: [
         {
           error: true
@@ -50,7 +51,7 @@ module.exports = {
   deleteSlot: {
     given: {
       id: '1',
-      createdAt: 'today',
+      createdAt: mockCreatedAt,
       bookedSlots: [
         {
           id: '1'
@@ -62,7 +63,7 @@ module.exports = {
     },
     expected: {
       id: '1',
-      createdAt: 'today',
+      createdAt: mockCreatedAt,
       bookedSlots: [
         {
           id: '1'
@@ -73,7 +74,7 @@ module.exports = {
   deleteSlotError: {
     given: {
       id: '1',
-      createdAt: 'today',
+      createdAt: mockCreatedAt,
       bookedSlots: [
         {
           id: '1'
@@ -92,7 +93,7 @@ module.exports = {
   deleteSlotOneInMany: {
     given: {
       id: '1',
-      createdAt: 'today',
+      createdAt: mockCreatedAt,
       bookedSlots: [
         {
           id: '1'
@@ -131,7 +132,7 @@ module.exports = {
     },
     expected: {
       id: '1',
-      createdAt: 'today',
+      createdAt: mockCreatedAt,
       bookedSlots: [
         {
           id: '1'
