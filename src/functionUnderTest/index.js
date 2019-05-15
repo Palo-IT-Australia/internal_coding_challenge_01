@@ -14,7 +14,7 @@ const { generateId } = require('../stamps/id');
  * and campaign, then upserts the campaign.
  *
  * @param {string} tableName Name of the table to be updated.
- * @param {object} campaign Campaign object.
+ * @param {object} [campaign] Campaign object.
  * @param {string} [campaign.id] optional Identifier.
  * @param {Date} [campaign.createdAt] optional Date of creation.
  * @param {Array} [campaign.bookingSlots] List of booking slots to process
@@ -22,8 +22,8 @@ const { generateId } = require('../stamps/id');
  * @returns upsert result
  */
 const processBookings = async (tableName, campaign = {}) => {
-  /**
-   */
+  // @TODO remove disbales and code between them
+  /* eslint-disable */
   if (!campaign.id) {
     campaign.id = generateId();
     campaign.createdAt = new Date();
@@ -61,6 +61,7 @@ const processBookings = async (tableName, campaign = {}) => {
       statusCode: 400
     };
   }
+  /* eslint-enable */
   return upsertCampaign(tableName, campaign);
 };
 
