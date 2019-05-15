@@ -1,7 +1,7 @@
 # PALO IT internal coding challenge edition 01
 
 
-Just for fun and education
+For fun and education
 
 ## Table of contents <a name="table-of-contents"></a>
 1. [Table of contents](#table-of-contents)
@@ -22,7 +22,7 @@ Your solution has to be readable, optimized and pass provided tests.
 
 ## Requirements <a name="requirements"></a>
 
-YOu need to have node in reasonable version installed. (8<)
+You need to have node in reasonable version installed. (8<)
 
 Use
 ```
@@ -42,9 +42,17 @@ to check your solution.
 
 ## How to participate <a name="how-to-participate"></a>
 
-Create a branch with your name. Commit your solution there.
+Create a branch with your name. Commit your solution there. When your solution is ready create a pull request.
+
+Once all participants will finish...
 
 
 ## Scoring <a name="scoring"></a>
+How your solution will be checked.
 
-Create a branch with your name. Commit your solution there.
+#### Code readability
+Code has to be readable. This will be judged by other competitors as well as by static code analysis tool.
+
+#### Performance
+There are tests measuring performance on big sets of data. You should be able to see them after running
+```npm start```
