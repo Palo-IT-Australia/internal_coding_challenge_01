@@ -72,8 +72,8 @@ const processBookings = async (tableName, campaign = {}) => {
       statusCode: 400
     };
   }
-  /* eslint-enable */
   return upsertCampaign(tableName, campaign);
+  /* eslint-enable */
 };
 
 module.exports = { processBookings };
