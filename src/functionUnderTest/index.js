@@ -8,16 +8,20 @@ const { generateId } = require('../stamps/id');
 /**
  * A Slot
  * @typedef {Object} Slot
- * @property {string=} id - The title
- * @property {boolean=} error - The artist
+ * @property {string=} id - The identifier
+ * @property {boolean=} error determines there is an error in the slot
+ *
+ * @example { id: '22', error: false }
  */
 
 /**
  * A campaign
  * @typedef {Object} Campaign
- * @property {string=} id - The title
- * @property {Date=} createdAt - The artist
- * @property {Slot[]} bookingSlots - The year
+ * @property {string=} id - The identifier
+ * @property {Date=} createdAt - The date
+ * @property {Slot[]} bookingSlots - The list of booking slot objects
+ *
+ * @example {id: 'qwe', createdAt: new Date(), bookingSlots: [ ... ] }
  */
 
 /**
@@ -29,6 +33,7 @@ const { generateId } = require('../stamps/id');
  *
  * @param {string} tableName Name of the table to be updated.
  * @param {Campaign=} campaign object.
+ * @example can be found in `src/data/campaigns
  *
  * @returns upsert result
  */
