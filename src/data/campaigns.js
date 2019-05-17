@@ -30,6 +30,34 @@ module.exports = {
       ]
     }
   },
+  upsertManySlots: {
+    given: {
+      id: '1',
+      createdAt: mockCreatedAt,
+      bookedSlots: [
+        {},
+        {},
+        {
+          id: '1'
+        }
+      ]
+    },
+    expected: {
+      id: '1',
+      createdAt: mockCreatedAt,
+      bookedSlots: [
+        {
+          id: 'new1'
+        },
+        {
+          id: 'new2'
+        },
+        {
+          id: '1'
+        }
+      ]
+    }
+  },
   upsertSlotError: {
     given: {
       id: '1',
@@ -55,6 +83,32 @@ module.exports = {
       bookedSlots: [
         {
           id: '1'
+        },
+        {
+          id: '0'
+        }
+      ]
+    },
+    expected: {
+      id: '1',
+      createdAt: mockCreatedAt,
+      bookedSlots: [
+        {
+          id: '1'
+        }
+      ]
+    }
+  },
+  deleteManySlots: {
+    given: {
+      id: '1',
+      createdAt: mockCreatedAt,
+      bookedSlots: [
+        {
+          id: '1'
+        },
+        {
+          id: '0'
         },
         {
           id: '0'

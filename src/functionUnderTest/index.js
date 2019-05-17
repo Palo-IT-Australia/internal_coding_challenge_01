@@ -44,39 +44,39 @@ const processBookings = async (tableName, campaign = {}) => {
     campaign.id = generateId();
     campaign.createdAt = new Date();
   }
+  const slotsToDel = [];
   let counter = 0;
   if (campaign.bookedSlots && campaign.bookedSlots.length > 0) {
     for (let i = 0; i < campaign.bookedSlots.length; i++) {
       const slot = campaign.bookedSlots[i];
       // if a slot to be booked
       if (!slot.id) {
-        counter += 1;
         slot.id = generateId();
         const canBook = await upsertBooking(slot, true);
         if (!canBook) {
           counter += 1;
         }
-        break;
       }
       // if a slot to be removed
       if (slot.id === '0') {
-        counter += 1;
         const canRemove = await upsertBooking(slot, false);
         if (canRemove) {
-          campaign.bookedSlots.splice(i, 1);
+          slotsToDel.push(i)
         } else {
           counter += 1;
         }
-        break;
       }
     }
   }
-  if (counter > 1) {
+
+  
+  if (counter > 0) {
     return {
       success: false,
       statusCode: 400
     };
   }
+  slotsToDel.reverse().forEach((i) => campaign.bookedSlots.splice(i, 1));
   return upsertCampaign(tableName, campaign);
   /* eslint-enable */
 };

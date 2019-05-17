@@ -39,8 +39,12 @@ Use
 ```
 npm start
 ```
+to check your solution against tests. You can also run tests in watch mode with
+```
+jest --watch
+```
+or use VSC plugin.
 
-to check your solution against tests. 
 
 ## How to participate <a name="how-to-participate"></a>
 
@@ -94,8 +98,10 @@ There will be two benchmarks determining the quality of your solution:
 
 1. **Performance** There are test that measure execution time of you method on big data sets. Lowest sum of the execution times wins. Winner gets `1 point`, second place gets `2 points` etc.
 2. **Code readability** Every participant will judge others' code readability. After the implementation all will go through all the branches and order them from most to least readable (NO VOTING IN YOUR OWN CODE). Again winner gets `1 point`, second place gets `2 points` etc. 
+3. **Static code analysis** Participants will receive 1 point for each eslint error and eslint disabled line.
 
-After **Performance** and **Code readability** scores will be added and the lowest score wins the whole thing!!
+Finally **Performance**, **Code readability** and  **Static code analysis** scores will be added and the lowest score wins!!
+
 Example
 
 ```
@@ -104,6 +110,7 @@ Example
 participant A's solution turned out to be the quickest one, but hes colleges both said his solution was least readable.
 Performance: 1pt
 Readability: 2pt + 2pt
-Score: 5pt
+Static code analysis: 1 disabled line = 1pt
+Score: 6pt
 
 ```
