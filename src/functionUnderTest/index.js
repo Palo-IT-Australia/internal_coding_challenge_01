@@ -37,48 +37,8 @@ const { generateId } = require('../stamps/id');
  *
  * @returns upsert result
  */
-const processBookings = async (tableName, campaign = {}) => {
-  // @TODO remove disables and code between them
-  /* eslint-disable */
-  if (!campaign.id) {
-    campaign.id = generateId();
-    campaign.createdAt = new Date();
-  }
-  const slotsToDel = [];
-  let counter = 0;
-  if (campaign.bookedSlots && campaign.bookedSlots.length > 0) {
-    for (let i = 0; i < campaign.bookedSlots.length; i++) {
-      const slot = campaign.bookedSlots[i];
-      // if a slot to be booked
-      if (!slot.id) {
-        slot.id = generateId();
-        const canBook = await upsertBooking(slot, true);
-        if (!canBook) {
-          counter += 1;
-        }
-      }
-      // if a slot to be removed
-      if (slot.id === '0') {
-        const canRemove = await upsertBooking(slot, false);
-        if (canRemove) {
-          slotsToDel.push(i)
-        } else {
-          counter += 1;
-        }
-      }
-    }
-  }
-
-  
-  if (counter > 0) {
-    return {
-      success: false,
-      statusCode: 400
-    };
-  }
-  slotsToDel.reverse().forEach((i) => campaign.bookedSlots.splice(i, 1));
-  return upsertCampaign(tableName, campaign);
-  /* eslint-enable */
+const processBookings = async (tableName, campaign) => {
+  // @TODO implement here
 };
 
 module.exports = { processBookings };
