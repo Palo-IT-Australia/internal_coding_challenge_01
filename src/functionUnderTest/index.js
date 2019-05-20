@@ -37,16 +37,22 @@ const { generateId } = require('../stamps/id');
  *
  * @returns upsert result
  */
-const processBookings = async (tableName, campaign = {}) => {
+
+const handleNewCampaign = (campaign) => {
   const updatedCampaign = campaign;
-  const { id, createdAt, bookedSlots } = campaign;
-  if (!id) {
+  if (!campaign.id) {
     updatedCampaign.id = generateId();
   }
-  if (!createdAt) {
+  if (!campaign.createdAt) {
     updatedCampaign.createdAt = new Date();
   }
-  if (!bookedSlots) {
+  return updatedCampaign;
+};
+
+const processBookings = async (tableName, campaign = {}) => {
+  const { bookedSlots } = campaign;
+  const updatedCampaign = handleNewCampaign(campaign);
+  if (!bookedSlots || bookedSlots.length === 0) {
     return upsertCampaign(tableName, updatedCampaign);
   }
   const slotsToBeRemoved = bookedSlots.filter(item => item.id === '0');
