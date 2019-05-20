@@ -37,8 +37,35 @@ const { generateId } = require('../stamps/id');
  *
  * @returns upsert result
  */
-const processBookings = async (tableName, campaign) => {
-  // @TODO implement here
+const processBookings = async (tableName, campaign = {}) => {
+  const updatedCampaign = campaign;
+  const { id, createdAt, bookedSlots } = campaign;
+  if (!id) {
+    updatedCampaign.id = generateId();
+  }
+  if (!createdAt) {
+    updatedCampaign.createdAt = new Date();
+  }
+  if (!bookedSlots) {
+    return upsertCampaign(tableName, updatedCampaign);
+  }
+  const slotsToBeRemoved = bookedSlots.filter(item => item.id === '0');
+  const slotsToBeAdded = bookedSlots.filter(item => (!item.id));
+  const removeSlotsQueries = slotsToBeRemoved.map(slot => upsertBooking(slot, false));
+  const addSlotsQueries = slotsToBeAdded.map((slot) => {
+    const updateData = slot;
+    updateData.id = generateId();
+    return upsertBooking(updateData, true);
+  });
+  const upsertBookingResult = await Promise.all([...addSlotsQueries, ...removeSlotsQueries]);
+  if (upsertBookingResult.includes(false)) {
+    return {
+      success: false,
+      statusCode: 400
+    };
+  }
+  updatedCampaign.bookedSlots = bookedSlots.filter(item => item.id !== '0');
+  return upsertCampaign(tableName, updatedCampaign);
 };
 
 module.exports = { processBookings };
