@@ -9,7 +9,7 @@ For fun and education
 3. [Requirements](#requirements)
 4. [How to use](#how-to-use)
 5. [How to participate](#how-to-participate)
-6. [Funciton description](#function-description)
+6. [Function description](#function-description)
 7. [Scoring](#scoring)
 
 
@@ -17,7 +17,7 @@ For fun and education
 
 ## Overview <a name="overview"></a>
 The first edition of Palo IT internal coding challenge. The task is to write a small piece of code.
-Your solution has to be `readable`, `performant` and `pass provided tests`.
+Your solution has to be `readable`, `preferment` and `pass provided tests`.
 
 
 
@@ -41,6 +41,7 @@ npm start
 ```
 to check your solution against tests. You can also run tests in watch mode with
 ```
+npm i -g jest
 jest --watch
 ```
 or use VSC plugin.
@@ -98,9 +99,8 @@ There will be two benchmarks determining the quality of your solution:
 
 1. **Performance** There are test that measure execution time of you method on big data sets. Lowest sum of the execution times wins. Winner gets `1 point`, second place gets `2 points` etc.
 2. **Code readability** Every participant will judge others' code readability. After the implementation all will go through all the branches and order them from most to least readable (NO VOTING IN YOUR OWN CODE). Again winner gets `1 point`, second place gets `2 points` etc. 
-3. **Static code analysis** Participants will receive 1 point for each eslint error and eslint disabled line.
 
-Finally **Performance**, **Code readability** and  **Static code analysis** scores will be added and the lowest score wins!!
+Finally **Performance** and **Code readability**  scores will be added and the lowest score wins!!
 
 Example
 
@@ -110,7 +110,6 @@ Example
 participant A's solution turned out to be the quickest one, but hes colleges both said his solution was least readable.
 Performance: 1pt
 Readability: 2pt + 2pt
-Static code analysis: 1 disabled line = 1pt
-Score: 6pt
+Score: 5pt
 
 ```
