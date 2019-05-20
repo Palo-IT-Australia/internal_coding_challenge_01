@@ -11,6 +11,7 @@ For fun and education
 5. [How to participate](#how-to-participate)
 6. [Function description](#function-description)
 7. [Scoring](#scoring)
+8. [Additional info](#info)
 
 
 
@@ -113,3 +114,6 @@ Readability: 2pt + 2pt
 Score: 5pt
 
 ```
+
+## Additional info <a name="info"></a>
+If you have any questions, please contact me (Jan) or Alex
